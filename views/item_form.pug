@@ -1,0 +1,26 @@
+extends layout 
+
+block content 
+
+  h1 #{title}
+
+  form(method="POST" action="")
+    div(style="display:grid;grid-template-columns:150px 1fr;gap:20px;max-width:650px;")
+      label(for="name") Item:
+      input#name(type="text" placeholder="Cucumber" name="name" value=(name===undefined ? "" : name))
+      label(for="description") Description:
+      textarea#description(cols="20" rows="5" placeholder="A long, green, pointy vegetable." name="description") #{description === undefined ? "" : description}
+      label(for="category") Category:
+      select(name="category")
+        for category in categories
+          option(selected=(selectedCategory === undefined ? null : selectedCategory.name === category.name ? true : false)) #{category.name} 
+      label(for="price") Price ($USD): 
+      input(type="number" min="0" placeholder="10" name="price" step="any" value=(price===undefined ? 0 : price))
+      label(for="in_stock") # In stock:
+      input(type="number" min="0" placeholder="1" name="in_stock" value=(in_stock===undefined ? 0 : in_stock))
+      button(type="submit") Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

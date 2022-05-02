@@ -1,0 +1,17 @@
+extends layout 
+
+block content 
+
+  h1 #{item.name}
+  h2 Category: #{item.category.name === null ? "hello" : item.category.name}
+
+  div(style="margin-left:20px;margin-top:20px;")
+    p #[strong #{item.description}]
+    p #[em as described by one of our customers]
+    p In stock: #[em #{item.in_stock}]
+
+    hr(style="margin-top:100px;")
+    p 
+      a(href=item.url+"/update") Update Item
+    p 
+      a(href=item.url+"/delete") Delete Item

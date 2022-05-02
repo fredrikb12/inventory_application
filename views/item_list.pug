@@ -1,0 +1,19 @@
+extends layout 
+
+block content 
+
+  h1= title
+
+  div(style="margin-left:20px;margin-top:20px;")
+
+    h2(style="font-size:0.9rem;") Items 
+
+    ul 
+      each item in item_list
+        li(style="margin-bottom:20px;") 
+          a(href=item.url) #{item.name}
+          p #{item.description}
+          p In stock: #{item.in_stock}
+    
+    hr
+    a(href="/shop/item/create") Add Item

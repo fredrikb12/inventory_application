@@ -1,0 +1,17 @@
+extends layout 
+
+block content 
+
+  h1 #{title}: #{item.name}
+
+  p #[strong #{item.description}]
+  p # In stock: #{item.in_stock}
+
+  hr(style="margin-top:50px;")
+
+  p Do you really want to delete this item?
+
+  form(method="POST" action="")
+    div 
+      input#itemid(type="hidden" name="itemid" required="true" value=item._id)
+    button(type="submit") Delete

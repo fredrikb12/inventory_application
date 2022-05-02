@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+
+  h1= title 
+
+  ul 
+    each category in category_list 
+      li 
+        a(href=category.url) #{category.name}
+        p #{category.description}
+    else 
+      li There are no categories.
+
+  hr
+  a(href="/shop/category/create") Add category

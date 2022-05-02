@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+
+  h1 #{title}
+
+  form(method="POST" action="" )
+    div(style="display:grid;grid-template-columns:150px 1fr;gap:20px;") 
+      label(for="name") Category:
+      input#name(style="max-width:500px;" type="text" placeholder="Vegetable, snack etc." name="name" value=(category===undefined ? "" : category))
+      label(for="description") Description:
+      textarea#description(style="max-width:500px;" cols="20" rows="5" placeholder="A green plant." name="description" ) #{description === undefined ? "" : description}
+    button(type="submit") Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg
